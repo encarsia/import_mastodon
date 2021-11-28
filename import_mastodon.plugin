@@ -1,0 +1,12 @@
+[Core]
+Name = import_mastodon
+Module = import_mastodon
+
+[Nikola]
+PluginCategory = Command
+
+[Documentation]
+Author = Anke K
+Version = 0.1
+Website = https://github.com/encarsia/import_mastodon
+Description = Import posts from Mastodon archive

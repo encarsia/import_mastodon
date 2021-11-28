@@ -1,0 +1,52 @@
+div {
+ display: block;
+}
+
+.main-content {
+ background-color: #f3f3f3;
+ padding: 1em;
+ border: 1px solid #f3f3f3;
+ border-radius: 10px;
+ margin-bottom: 1em;
+}
+
+.visibility {
+ font-size: 0.8em;
+ border-top: 1px solid grey;
+ padding: 1em 0;
+}
+
+.post-activity {
+ border-top: 1px solid grey;
+ padding: 1em 0;
+}
+
+.comment {
+ padding: 1em 0;
+ border-bottom: 2px solid #f3f3f3;
+}
+
+.comments {
+ border-top: 1px solid grey;
+}
+
+.sidebar-about h1 {
+ font-family: inherit;
+}
+
+.video-placeholder {
+ background: black;
+ display: flex;
+ height: 300px;
+ max-width: 100%;
+ width: 640px;
+}
+
+.play-icon {
+ border-bottom: 30px solid transparent;
+ border-left: 50px solid white;
+ border-top: 30px solid transparent;
+ color: white;
+ margin: auto;
+}
+

@@ -1,0 +1,36 @@
+# configuration file for the Mastodon import plugin for Nikola site generator
+
+site:
+    # (optional) defaults to "en"
+    lang: # de
+    # description/subtitle
+    descr:
+    # address of this static archive
+    url: http://localhost:8000/
+    # title
+    title: Static Mastodon archive
+    # (optional) adds a navigation link to main website/blog
+    main_url: https://example.com
+
+# set link to original source for content
+originalsource: no
+
+# this may come in handy if you tend to write Twitter-like threads which are a chain of replies to your own post, consider that replies to replies of other users may be included
+replytoself: yes
+
+# include/exclude hashtags
+tags:
+    # include only, no other posts will be imported
+    include:
+        # - tag1
+        # - tag2
+    exclude:
+        # - tag3
+        # - tag4
+
+# include followers only toots
+followers_only: yes
+
+watermark: no
+watermark_text: Don't copy that floppy!
+
