@@ -193,8 +193,8 @@ GENERATE_RSS = False
 FILES_FOLDERS = {'files': 'files'}
 INDEX_DISPLAY_POST_COUNT = 30
 DISABLED_PLUGINS = ["robots"]
-CONTENT_FOOTER = 'Contents &copy; {date} - {author} - Powered by 
-    <a href="https://getnikola.com" rel="nofollow">Nikola</a>'
+CONTENT_FOOTER = \"""Contents &copy; {date} - {author} - Powered by 
+    <a href="https://getnikola.com" rel="nofollow">Nikola</a>\"""
 
 # ### end Mastodon import plugin config
 
@@ -245,6 +245,7 @@ CONTENT_FOOTER = 'Contents &copy; {date} - {author} - Powered by
                 cat = "followers only"
             else:
                 cat = ""
+            
             # add hashtags and collect media/image file paths
             tags, media_files, image_files = [], [], []
             try:
@@ -254,13 +255,15 @@ CONTENT_FOOTER = 'Contents &copy; {date} - {author} - Powered by
             except (TypeError, KeyError):
                 pass
 
+            # images and other media files
             try:
                 for media in post["attachment"]:
                     # media type is either audio or video
                     _mediatype = media["mediaType"].split("/")[0]
                     tags.append(_mediatype)
-                    # tuple is appended on media files list as (audio, path)
-                    image_files.append(media["url"]) if _mediatype == "image"\
+                    # tuple of appended media files as "(audio, path)"
+                    # tuple of appended image files as ("path, description")
+                    image_files.append((media["url"], media["name"])) if _mediatype == "image"\
                         else media_files.append((_mediatype, media["url"]))
             except (TypeError, KeyError):
                 pass
@@ -307,6 +310,7 @@ CONTENT_FOOTER = 'Contents &copy; {date} - {author} - Powered by
                 - copy image files to images folder
                 - copy audio/video files to files folder
                 - add media tag(s) to meta info
+                - show image description beneath image 
                 - add div with style to source for gray background with
                   provided custom.css (see README)
         """
@@ -321,7 +325,7 @@ CONTENT_FOOTER = 'Contents &copy; {date} - {author} - Powered by
                 content += ("<p>" + p)
                 
         image_html = ""
-        for f in image_files:
+        for f, descr in image_files:
             # file structure is
             # /media_attachments/files/123/123/123/original/dfghjdfghj.png
             # filenames are probably unique so we try the easy way and skip the
@@ -332,9 +336,12 @@ CONTENT_FOOTER = 'Contents &copy; {date} - {author} - Powered by
                         os.path.join(self.output_folder, "images")
                         )
             
-            image_html += """<p><img src="{}"></p>\n""".format(
-                os.path.join("..", "..", "images", f.split("/")[-1])
+            image_html += """<p><img src="{}"""".format(
+                os.path.join("..", "..", "images", f.split("/")[-1]),
                 )
+            
+            if descr != "None":
+                image_html += """<div class="comments"><p><i>Image description:</i> {}</p></div>\n""".format(descr)
 
         media_html = ""
         for t, f in media_files:

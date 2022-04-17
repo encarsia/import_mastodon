@@ -1,6 +1,6 @@
                                Tumbolia Public License
 
-    Copyright Anke K <An.Ke@bahnfreikartoffelbrei.de>, 2021
+    Copyright Anke K <An.Ke@bahnfreikartoffelbrei.de>, 2022
 
     Copying and distribution of this file, with or without modification, are
     permitted in any medium without royalty provided the copyright notice and

@@ -8,7 +8,7 @@ The output is html, and there's little to no configuration done in the resulting
 
 This plugin was inspired by my [Google+ import plugin](https://github.com/encarsia/gplus_nikola_import). It will import only posts that are not replies or boosts or direct messages.
 
-If you consider to release this into the wilderness, keep in mind that the import includes public posts and followers only posts if enabled in the config. You can filter for hashtags (includes/excludes) and watermark images.
+If you consider to release the results into the wilderness, keep in mind that the import includes public posts and followers only posts if enabled in the config. You can filter for hashtags (includes/excludes) and watermark images.
 
 There is an additional Python script called ``analyze_archive.py`` that prints information about the activities stored in the archive in greater detail. Running the script will not import anything.
 
@@ -18,12 +18,12 @@ Enjoy.
 
  * Request, download and unpack your Mastodon archive.
  * Copy the extracted plugin archive folder into the ``plugins`` folder of an existing Nikola site.
-    * Chances are that there isn't a ``plugins`` folder yet. Create it.
+    * If there isn't a ``plugins`` folder yet, create it.
     * The plugin will create a new site in a subfolder so there won't be any contaminations with actual data.
     * If you are unsure or don't want that you can easily initiate an empty site for that purpose: ``$ nikola init dummy_site``.
  * Edit ``plugins/import_mastodon/config.yaml`` to your needs:
     * title/description/link to website etc.
-    * include your replies to own posts; this may be useful if you tend to chain multiple posts regarting one topic; defaults to *no/False*
+    * include your replies to own posts; this may be useful if you tend to chain multiple posts regarding one topic; defaults to *no/False*
     * include links to the original posts (if you move or delete your account these will be deadlinks, of course; recommended only if you consider this static archive as a form of backup with original posts still available)
     * filtering tags:
         * setting included hashtags will only import posts with defined tags
@@ -58,18 +58,18 @@ Enjoy.
   * boosted users
   * replied profiles
   * replies to profiles that are no longer available (profiles may be deleted or moved, or are muted/suspended or on muted/suspended instances on your instance)
-  * broken conversations (original post of the reply is probably deleted, some users auto-delete old posts so this is probably a common phenomenon).
+  * broken conversations (original post of the reply is probably deleted, some users auto-delete old posts so this may probably be a common phenomenon).
    * publishing year
    * hashtags
    * likes
    * media attachments
 
-* The script asks you if you want to check the availability of profiles with the most interactions. This process may take a while.
+* The script asks you if you want to check the availability of profiles with the most interactions. This process may take a while as the lookup will be executed just then.
 
 ## KNOWN ISSUES
 
-* As Mastdodon as a microblogging platform doesn't support titles, these are just ascending numbers.
-* If you re-run the import with an altered configuration you should delete the ``posts/`` folder because files are only replaced and added not deleted. Otherwise there may be posts included that were not meant to be there by a current configuration.
+* As Mastodon as a microblogging platform doesn't support titles, the blog post titles are just ascending numbers.
+* If you re-run the import with an altered configuration you should delete the ``posts/`` folder because files are only replaced and added not deleted. Otherwise there may be posts included that were not meant to be there with a current configuration.
  
 ## EXAMPLE OUTPUT
 
